@@ -1,0 +1,53 @@
+<style>
+  #map {
+  	width:  50%;
+    height: 50%; 
+  }
+  	#bg{
+  		position: fixed;
+  		top: -100;
+  		right: 0;
+  		min-width: 50%;
+  		min-height: 50%;
+  		z-index: -100;
+  	}
+
+
+  body{
+  }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>map</title>
+</head>
+<body>
+	<img id="bg" src="https://cdn.icon-icons.com/icons2/38/PNG/512/taxi_transport_4968.png">
+  <div id="map"></div>
+    <script>
+      mylat = {{ mylat }}
+      mylng = {{ mylng }}
+
+      function initMap() {
+        var myLatLng = {lat: mylat, lng: mylng};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+    </script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+    </script>
+
+    <h1>사용자가 자신의 위치를 보내고 픽업을 요청합니다!</h1>
+</body>
+</html>

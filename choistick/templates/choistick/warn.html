@@ -1,0 +1,56 @@
+<style>
+  #map {
+  	left: 600px;
+  	width: 50%;
+    height: 50%; 
+  }
+
+  #h1{
+
+  	margin-left: 600px;
+  }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>map</title>
+  <style type="text/css">
+  	#bg{
+  		position: fixed;
+  		top: 0;
+  		left: 0;
+  		min-width: 100%;
+  		min-height: 50%;
+  		z-index: -100;
+  	}
+  </style>
+</head>
+<body>
+	<img id="bg" src="http://khyberhealthcare.com/wp-content/themes/health-center-lite/images/emergency-logo.png">
+  <div id="map" ></div>
+    <script>
+      mylat = {{ mylat }}
+      mylng = {{ mylng }}
+
+      function initMap() {
+        var myLatLng = {lat: mylat, lng: mylng};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Warning'
+        });
+      }
+    </script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+    </script>
+    <h1 id="h1">사용자가 넘어진 것 같습니다. 신속히 확인해주세요!</h1>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Choistick</title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<style>
+	body{
+
+		display: inline;
+	}
+	div{
+		display: inline;
+	}
+
+	h1{
+		color: #FF4E00;
+		text-align: center;
+		text-decoration: overline;
+
+		font-style: italic;
+		font-size: 100pt;
+		font-weight: bold;
+	}
+
+	.button {
+		position: relative;
+		left: 250px;
+		top: -100px;
+
+	  display: inline-block;
+	  border-radius: 4px;
+	  background-color: #f4511e;
+	  border: none;
+	  color: #FFFFFF;
+	  text-align: center;
+	  font-size: 28px;
+	  padding: 10px;
+	  width: 200px;
+	  transition: all 0.5s;
+	  cursor: pointer;
+	  margin: 5px;
+	}
+
+	.button span {
+	  cursor: pointer;
+	  display: inline-block;
+	  position: relative;
+	  transition: 0.5s;
+	}
+
+	.button span:after {
+	  content: '\00bb';
+	  position: absolute;
+	  opacity: 0;
+	  top: 0;
+	  right: -20px;
+	  transition: 0.5s;
+	}
+
+	.button:hover span {
+	  padding-right: 25px;
+	}
+
+	.button:hover span:after {
+	  opacity: 1;
+	  right: 0;
+	}
+</style>
+</head>
+<body>
+	<h1>Hello Choistick!</h1><br><br>
+	<form class="w3-container w3-card-4 w3-light-grey" action="/choistick/map/" method="post" style="text-align: center; height: 200px;">
+ 	 {% csrf_token %} 
+  		<h2>Search Location</h2>
+  		<div>
+  			<div style="display: inline;">
+	  			<p >
+	  				<input class="w3-input w3-border w3-round-large" name="latitude" type="text" placeholder="위도" style="width: 15%; margin: 0 auto; display: inline;">
+	  			</p>
+	  			<p>
+	  				<input class="w3-input w3-border w3-round-large" name="longitude" placeholder="경도" style="width:15%; margin: 0 auto; display: inline;" type="text">
+	  			</p>
+  			</div>
+
+  			<div style="display: inline;">
+  				<input type="submit" class="button" value="확인">
+  			</div>
+  		</div>
+	</form>
+	<br><br>
+
+
+	<form class="w3-container w3-card-4 w3-light-grey" action="/choistick/pick/" method="post" style="text-align: center; height: 200px;">
+  {% csrf_token %} 
+  <h2>Pick up please</h2>
+  <p>
+  <input class="w3-input w3-border w3-round-large" name="latitude" type="text" placeholder="위도" style="width: 15%; margin: 0 auto;"></p>
+  <p>
+  <input class="w3-input w3-border w3-round-large" name="longitude" type="text" placeholder="경도" style="width:15%;  margin: 0 auto;"></p>
+
+  <input type="submit" class="button" value="확인">
+</form>
+	<br><br>
+	
+
+<form class="w3-container w3-card-4 w3-light-grey" action="/choistick/warn/" method="post" style="text-align: center; height: 200px;">
+  {% csrf_token %} 
+  <h2>Warning</h2>
+  <p>
+  <input class="w3-input w3-border w3-round-large" name="latitude" type="text" placeholder="위도" style="width: 15%;  margin: 0 auto;"></p>
+  <p>
+  <input class="w3-input w3-border w3-round-large" name="longitude" type="text" placeholder="경도" style="width:15%;  margin: 0 auto;"></p>
+
+  <input type="submit" class="button" value="확인">
+</form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<style>
+  #map {
+    height: 100%; 
+  }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>map</title>
+</head>
+<body>
+  <div id="map"></div>
+    <script>
+      mylat = {{ mylat }}
+      mylng = {{ mylng }}
+
+      function initMap() {
+        var myLatLng = {lat: mylat, lng: mylng};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'find!'
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+    </script>
+</body>
+</html>
